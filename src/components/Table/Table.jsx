@@ -41,23 +41,19 @@ const TableComponent = () => {
 						<TableBody>
 							{
 								data.rows.map((row, index) => (
-									Object.hasOwnProperty.call(row, "childTable") ? (
-										<ItemNestedTable key={index} data={row.childTable} />
-									) : (
-										<TableRow key={index}>
-											{
-												row.data.map((data, index) => (
-													<TableCell key={index} align="center">
-														{
-															data.value.map((value, index) => (
-																<ItemTable key={index} value={value} />
-															))
-														}
-													</TableCell>
-												))
-											}
-										</TableRow>
-									)
+									<TableRow key={index}>
+										{
+											row.data.map((data, index) => (
+												<TableCell key={index} align="center" colSpan={data.colspan} rowSpan={data.rowspan}>
+													{
+														data.value.map((value, index) => (
+															<ItemTable key={index} value={value} />
+														))
+													}
+												</TableCell>
+											))
+										}
+									</TableRow>
 								))
 							}
 						</TableBody>

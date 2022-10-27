@@ -486,135 +486,87 @@ export const testData = {
                     "value": "Ecuaciones de Maxwell"
                 }
             ]
+        },
+        {
+            "value": [
+                {
+                    "type": "texto",
+                    "value": "Ecuaciones de Maxwell"
+                }
+            ]
+        },
+        {
+            "value": [
+                {
+                    "type": "texto",
+                    "value": "Ecuaciones de Maxwell"
+                }
+            ]
         }
     ],
     "rows": [
         {
-            "childTable": {
-                "headers": [
-                    {
-                        "value": [
-                            {
-                                "type": "texto",
-                                "value": "Ley de Gauss"
-                            }
-                        ]
-                    }
-                ],
-                "rows": [
-                    {
-                        "data": [
-                            {
-                                "value": [
-                                    {
-                                        "type": "texto",
-                                        "value": "Forma integral \\n $\\oint \\vec{E} \\cdot d \\vec{A} = \\frac{Q_{int}}{\\in_0}$"
-                                    }
-                                ]
-                            },
-                            {
-                                "value": [
-                                    {
-                                        "type": "texto",
-                                        "value": "Forma diferencial \\n $\\vec{\\nabla} \\cdot \\vec{E} = \\frac{\\rho}{\\in_0}$"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            "data": {
-                "value": []
-            }
+            "data": [
+                {
+                    "value": [
+                        {
+                            "type": "texto",
+                            "value": "Prismas Rectos"
+                        }
+                    ]
+                },
+                {
+                    "value": [
+                        {
+                            "type": "texto",
+                            "value": "Prismas Rectos"
+                        }
+                    ]
+                },
+                {
+                    "value": [
+                        {
+                            "type": "texto",
+                            "value": "Prismas Rectos"
+                        }
+                    ]
+                }
+            ]
         },
         {
-            "childTable": {
-                "headers": [
-                    {
-                        "value": "Ley de Gauss para el magnetismo"
-                    }
-                ],
-                "rows": [
-                    {
-                        "data": [
-                            {
-                                "value": "Forma integral \\n $\\oint \\vec{B} \\cdot d \\vec{A} = 0$"
-                            },
-                            {
-                                "value": "Forma diferencial \\n $\\vec{\\nabla} \\cdot \\vec{B} = 0$"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "data": {
-                "value": []
-            }
-        },
-        {
-            "childTable": {
-                "headers": [
-                    {
-                        "value": "Ley de Ampère-Maxwell"
-                    }
-                ],
-                "rows": [
-                    {
-                        "data": [
-                            {
-                                "value": "Forma integral \\n $\\oint \\vec{B} \\cdot d \\vec{A} = \\mu_0$ \\left( i_c + \\frac{\\in d \\phi_E}{dt} \\right)"
-                            },
-                            {
-                                "value": "Forma diferencial \\n $\\vec{\\nabla} \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0 \\in_0 \\frac{\\partial \\vec{E}}{\\partial t}$"
-                            }
-                        ]
-                    }
+            "data": [
+                {
+                    "value": [
+                        {
+                            "type": "texto",
+                            "value": "Prismas Rectos"
+                        }
+                    ],
+                    "colspan": 2,
+                    "rowspan": 2
+                },
+                {
+                    "value": [
+                        {
+                            "type": "texto",
+                            "value": "Prismas Rectos"
+                        }
+                    ]
+                },
 
-                ]
-            },
-            "data": {
-                "value": []
-            }
+            ]
         },
         {
-            "childTable": {
-                "headers": [
-                    {
-                        "value": [
-                            {
-                                "type": "texto",
-                                "value": "Ley de Faraday-Lenz"
-                            }
-                        ]
-                    }
-                ],
-                "rows": [
-                    {
-                        "data": [
-                            {
-                                "value": [
-                                    {
-                                        "type": "texto",
-                                        "value": "Forma integral \\n $\\oint \\vec{E} \\cdot d \\vec{l} = - \\frac{d \\phi_B}{dt}"
-                                    }
-                                ]
-                            },
-                            {
-                                "value": [
-                                    {
-                                        "type": "texto",
-                                        "value": "Forma diferencial \\n $\\vec{\\nabla} \\times \\vec{E} = \\frac{\\partial \\vec{B}}{\\partial t}$"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            "data": {
-                "value": []
-            }
+            "data": [
+                {
+                    "value": [
+                        {
+                            "type": "texto",
+                            "value": "Prismas Rectos"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
