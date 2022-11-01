@@ -1,0 +1,57 @@
+{
+	"tipoEjercicio": "_id",
+	"titulo": "Ejemplo de quiz",
+	"nombre": "Actividad 1",
+	"iconografía": ["nivel", "dominio", "tipoActividad"],
+	"instruccion": [
+		{
+			"type": "texto",
+			"value": "De manera individual revisa lo siguiente"
+		}
+	],
+	"recursos": ["id"],
+	"cuerpo": [
+		{
+			"pregunta": [
+				{
+					"type": "latex",
+					"value": "¿ $A_L = P_B \\cdot h$ es o no un latex?"
+				},
+				{
+					"type": "imagen",
+					"value": "http://jgdesing.com/demo/img30x50.svg"
+				},
+				{
+					"type": "text",
+					"value": "toma en cuenta la siguiente imagen para tu respuesta"
+				}
+			],
+			"respuestas": [
+				{
+					"respuesta": [
+						{
+							"type": "text",
+							"value": "todo está ok"
+						}
+					],
+					"correcta": true
+				},
+				{
+					"respuesta": [
+						{
+							"type": "latex",
+							"value": "$A_L = P_B \\cdot h$  no es un latex como lo prueba la siguiente imagen"
+						},
+						{
+							"type": "imagen",
+							"value": "http://jgdesing.com/demo/img30x50.svg"
+						}
+					],
+					"correcta": false
+				}
+			]
+		}
+	],
+	"keyword": ["palabra1", "palabraN"],
+	"class": ["_id", "_id"]
+}

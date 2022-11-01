@@ -1,0 +1,112 @@
+[
+	{
+		"_id": "61fd900a68c9d822f78dd94b",
+		"pregunta": "La mayoría de los seres vivos puede colocarse en cuatro categorías.",
+		"recursos": [],
+		"respuestas": [
+			{
+				"_id": "61fd900a68c9d822f78dd94c",
+				"respuesta": "Verdadero.",
+				"correcta": false,
+				"recursos": [],
+				"__typename": "respuestas"
+			},
+			{
+				"_id": "61fd900a68c9d822f78dd94d",
+				"respuesta": "Falso.",
+				"correcta": true,
+				"recursos": [],
+				"__typename": "respuestas"
+			}
+		],
+		"__typename": "Quiz"
+	},
+	{
+		"_id": "61fd900a68c9d822f78dd94e",
+		"pregunta": "Los organismos solitarios viven apartados de sus congéneres.",
+		"recursos": [],
+		"respuestas": [
+			{
+				"_id": "61fd900a68c9d822f78dd94f",
+				"respuesta": "Verdadero.",
+				"correcta": true,
+				"recursos": [],
+				"__typename": "respuestas"
+			},
+			{
+				"_id": "61fd900a68c9d822f78dd950",
+				"respuesta": "Falso.",
+				"correcta": false,
+				"recursos": [],
+				"__typename": "respuestas"
+			}
+		],
+		"__typename": "Quiz"
+	},
+	{
+		"_id": "61fd900a68c9d822f78dd951",
+		"pregunta": "Los seres gregarios viven e interactúan con otros semejantes a ellos.",
+		"recursos": [],
+		"respuestas": [
+			{
+				"_id": "61fd900a68c9d822f78dd952",
+				"respuesta": "Verdadero.",
+				"correcta": true,
+				"recursos": [],
+				"__typename": "respuestas"
+			},
+			{
+				"_id": "61fd900a68c9d822f78dd953",
+				"respuesta": "Falso.",
+				"correcta": false,
+				"recursos": [],
+				"__typename": "respuestas"
+			}
+		],
+		"__typename": "Quiz"
+	},
+	{
+		"_id": "61fd900a68c9d822f78dd954",
+		"pregunta": "El tiburón blanco recorre los océanos con más animales de su especie, por lo que es un ser gregario.",
+		"recursos": [],
+		"respuestas": [
+			{
+				"_id": "61fd900a68c9d822f78dd955",
+				"respuesta": "Verdadero.",
+				"correcta": false,
+				"recursos": [],
+				"__typename": "respuestas"
+			},
+			{
+				"_id": "61fd900a68c9d822f78dd956",
+				"respuesta": "Falso.",
+				"correcta": true,
+				"recursos": [],
+				"__typename": "respuestas"
+			}
+		],
+		"__typename": "Quiz"
+	},
+	{
+		"_id": "61fd900a68c9d822f78dd957",
+		"pregunta": "El lobo común es un ser gregario porque nace y vive dentro de una manada.",
+		"recursos": [],
+		"respuestas": [
+			{
+				"_id": "61fd900a68c9d822f78dd958",
+				"respuesta": "Verdadero.",
+				"correcta": true,
+				"recursos": [],
+				"__typename": "respuestas"
+			},
+			{
+				"_id": "61fd900a68c9d822f78dd959",
+				"respuesta": "Falso.",
+				"correcta": false,
+				"recursos": [],
+				"__typename": "respuestas"
+			}
+		],
+		"__typename": "Quiz"
+	}
+]

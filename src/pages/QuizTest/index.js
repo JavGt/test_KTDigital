@@ -1,0 +1,1 @@
+export { default as QuizTest } from './QuizTest.page';

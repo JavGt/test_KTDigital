@@ -7,7 +7,7 @@ export default defineConfig({
 	plugins: [react()],
 	server: {
 		host: true,
-		port: 3000,
+		strictPort: false,
 	},
 	resolve: {
 		alias: {
@@ -16,6 +16,7 @@ export default defineConfig({
 			'@pages': path.resolve(__dirname, 'src/pages'),
 			'@utils': path.resolve(__dirname, 'src/utils'),
 			'@assets': path.resolve(__dirname, 'src/assets'),
+			'#': path.resolve(__dirname, './'),
 		},
 	},
 });

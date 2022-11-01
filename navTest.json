@@ -1,0 +1,175 @@
+{
+	"Indice": [
+		{
+			"seccion": "Primer parcial",
+			"nombre": "Mecánica y deporte",
+			"nivel": 0,
+			"hijos": [
+				{
+					"seccion": "En contexto",
+					"nombre": "",
+					"nivel": 1,
+					"hijos": [
+						{
+							"seccion": "",
+							"nombre": "Introducción",
+							"nivel": 2,
+							"hijos": []
+						},
+						{
+							"seccion": "",
+							"nombre": "Evaluación diagnostica",
+							"nivel": 2,
+							"hijos": []
+						}
+					]
+				},
+				{
+					"seccion": "Tema 1",
+					"nombre": "El entrenamiento deportivo como ejemplo de aplicación de l mecánica",
+					"nivel": 1,
+					"hijos": []
+				},
+				{
+					"seccion": "Tema 2",
+					"nombre": "Mivimiento rectilieno uniforme",
+					"nivel": 1,
+					"hijos": []
+				},
+				{
+					"seccion": "Tema 3 ",
+					"nombre": "Movimiento Rectilieno Uniforme Acelerado",
+					"nivel": 1,
+					"hijos": [
+						{
+							"seccion": "Subtema",
+							"nombre": "Ecuacoines MRUA",
+							"nivel": 2,
+							"hijos": []
+						}
+					]
+				},
+				{
+					"seccion": "Evaluación",
+					"nombre": "del primer Parcial",
+					"nivel": 1,
+					"hijos": []
+				}
+			]
+		},
+		{
+			"seccion": "Segundo parcial",
+			"nombre": "Chapuzón de energía",
+			"nivel": 0,
+			"hijos": [
+				{
+					"seccion": "En contexto",
+					"nombre": "",
+					"nivel": 1,
+					"hijos": [
+						{
+							"seccion": "",
+							"nombre": "Introducción",
+							"nivel": 2,
+							"hijos": []
+						},
+						{
+							"seccion": "",
+							"nombre": "Evaluación diagnostica",
+							"nivel": 2,
+							"hijos": []
+						}
+					]
+				},
+				{
+					"seccion": "Tema 4",
+					"nombre": "El entrenamiento deportivo como ejemplo de aplicación de l mecánica",
+					"nivel": 1,
+					"hijos": []
+				},
+				{
+					"seccion": "Tema 5",
+					"nombre": "Mivimiento rectilieno uniforme",
+					"nivel": 1,
+					"hijos": []
+				},
+				{
+					"seccion": "Tema 6 ",
+					"nombre": "Movimiento Rectilieno Uniforme Acelerado",
+					"nivel": 1,
+					"hijos": [
+						{
+							"seccion": "Subtema",
+							"nombre": "Ecuacoines MRUA",
+							"nivel": 2,
+							"hijos": []
+						}
+					]
+				},
+				{
+					"seccion": "Evaluación",
+					"nombre": "del segundo Parcial",
+					"nivel": 1,
+					"hijos": []
+				}
+			]
+		},
+		{
+			"seccion": "Tercer parcial",
+			"nombre": "¿Qué rayos está pasando?",
+			"nivel": 0,
+			"hijos": [
+				{
+					"seccion": "En contexto",
+					"nombre": "",
+					"nivel": 1,
+					"hijos": [
+						{
+							"seccion": "",
+							"nombre": "Introducción",
+							"nivel": 2,
+							"hijos": []
+						},
+						{
+							"seccion": "",
+							"nombre": "Evaluación diagnostica",
+							"nivel": 2,
+							"hijos": []
+						}
+					]
+				},
+				{
+					"seccion": "Tema 7",
+					"nombre": "El entrenamiento deportivo como ejemplo de aplicación de l mecánica",
+					"nivel": 1,
+					"hijos": []
+				},
+				{
+					"seccion": "Tema 8",
+					"nombre": "Mivimiento rectilieno uniforme",
+					"nivel": 1,
+					"hijos": []
+				},
+				{
+					"seccion": "Tema 9 ",
+					"nombre": "Movimiento Rectilieno Uniforme Acelerado",
+					"nivel": 1,
+					"hijos": [
+						{
+							"seccion": "Subtema",
+							"nombre": "Ecuacoines MRUA",
+							"nivel": 2,
+							"hijos": []
+						}
+					]
+				},
+				{
+					"seccion": "Evaluación",
+					"nombre": "del tercer Parcial",
+					"nivel": 1,
+					"hijos": []
+				}
+			]
+		}
+	]
+}
