@@ -2,13 +2,7 @@ import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/system';
 
-const QuizInformation = ({
-	numQuestion,
-	maxQuestions,
-	resource,
-	questionText,
-	maxAnswers,
-}) => {
+const QuizInformation = ({ numQuestion, maxQuestions, maxAnswers }) => {
 	return (
 		<QuizInformationStyled>
 			<Typography>
@@ -21,7 +15,6 @@ const QuizInformation = ({
 				Opciones disponibles:
 				<Typography component='span'>{` ${maxAnswers}`}</Typography>
 			</Typography>
-			<Typography>{questionText}</Typography>
 		</QuizInformationStyled>
 	);
 };

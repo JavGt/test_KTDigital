@@ -1,3 +1,4 @@
+import { Container } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { MathJaxContext } from 'better-react-mathjax';
 import { Quiz } from './components/Quiz';
@@ -21,7 +22,9 @@ const QuizTest = () => {
 	return (
 		<MathJaxContext config={config}>
 			<QuizBackground>
-				<Quiz />
+				<Container maxWidth='lg'>
+					<Quiz />
+				</Container>
 			</QuizBackground>
 		</MathJaxContext>
 	);

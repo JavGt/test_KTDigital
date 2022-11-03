@@ -1,15 +1,17 @@
+import { typeFactory } from '@/utils/typeFactory';
 import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { Fragment } from 'react';
 
-const TitleExercise = ({ title, description }) => {
+const TitleExercise = ({ title, instructions }) => {
 	return (
 		<TitleExerciseStyled>
-			<Typography variant='h4' fontWeight={900} component='h1' color='primary.main'>
+			<Typography variant='h4' fontWeight={800} component='h3' color='primary.main'>
 				{title}
 			</Typography>
-			<Typography variant='h6' component='h2'>
-				{description}
-			</Typography>
+			{instructions.map((inst, idx) => (
+				<Fragment key={idx}>{typeFactory(inst)}</Fragment>
+			))}
 		</TitleExerciseStyled>
 	);
 };
