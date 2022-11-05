@@ -1,0 +1,56 @@
+{
+	"finalScore": 50,
+	"questions": [
+		{
+			"question": 1,
+			"qualification": 100,
+			"selectedOptions": [
+				{
+					"index": 0,
+					"correct": true,
+					"contents": [
+						{
+							"type": "latex",
+							"value": "$A_L = P_B \\cdot  h$"
+						},
+						{
+							"type": "text",
+							"value": "No es un latex como lo prueba la siguiente imagen"
+						}
+					]
+				}
+			]
+		},
+		{
+			"question": 2,
+			"qualification": 50,
+			"selectedOptions": [
+				{
+					"index": 0,
+					"correct": false,
+					"contents": [
+						{
+							"type": "text",
+							"value": "No, la formula es incorrecta"
+						}
+					]
+				},
+				{
+					"index": 2,
+					"correct": true,
+					"contents": [
+						{
+							"type": "text",
+							"value": "No, la formula es incorrecta"
+						}
+					]
+				}
+			]
+		},
+		{
+			"question": 3,
+			"qualification": 0,
+			"selectedOptions": []
+		}
+	]
+}

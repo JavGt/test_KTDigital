@@ -3,7 +3,7 @@
 	"titulo": "Ejemplo de quiz",
 	"nombre": "Actividad 1",
 	"iconografía": ["nivel", "dominio", "tipoActividad"],
-	"instruccion": [
+	"instruction": [
 		{
 			"type": "texto",
 			"value": "De manera individual revisa lo siguiente"
@@ -12,52 +12,96 @@
 	"recursos": ["id"],
 	"cuerpo": [
 		{
-			"pregunta": [
+			"question": [
+				{
+					"type": "texto",
+					"value": "¿Esta formula es correcta?"
+				},
 				{
 					"type": "latex",
-					"value": "¿ $A_L = P_B \\cdot h$ es o no un latex?"
+					"value": "$A_B = 2 a^2$"
 				},
 				{
 					"type": "text",
-					"value": "toma en cuenta la siguiente imagen para tu respuesta"
+					"value": "Toma en cuenta la información dada"
 				}
 			],
-			"respuestas": [
+			"options": [
 				{
-					"respuesta": [
+					"contents": [
 						{
 							"type": "text",
-							"value": "todo está ok"
+							"value": "La formula es correcta"
 						}
 					],
-					"correcta": true
+					"correct": true
 				},
 				{
-					"respuesta": [
+					"contents": [
 						{
 							"type": "text",
-							"value": "No lo se"
+							"value": "No, la formula es incorrecta"
 						}
 					],
-					"correcta": false
+					"correct": true
 				},
 				{
-					"respuesta": [
+					"contents": [
 						{
 							"type": "latex",
-							"value": "$A_L = P_B \\cdot h$  no es un latex como lo prueba la siguiente imagen"
+							"value": "$A_L = P_B \\cdot  h$  "
+						},
+						{
+							"type": "text",
+							"value": "no es un latex como lo prueba la siguiente imagen"
 						},
 						{
 							"type": "imagen",
 							"value": "http://jgdesing.com/demo/img30x50.svg"
 						}
 					],
-					"correcta": false
+					"correct": false
+				},
+				{
+					"contents": [
+						{
+							"type": "text",
+							"value": "todo está ok"
+						}
+					],
+					"correct": false
+				},
+				{
+					"contents": [
+						{
+							"type": "text",
+							"value": "todo está ok"
+						}
+					],
+					"correct": false
+				},
+				{
+					"contents": [
+						{
+							"type": "text",
+							"value": "todo está ok"
+						}
+					],
+					"correct": false
+				},
+				{
+					"contents": [
+						{
+							"type": "text",
+							"value": "todo está ok"
+						}
+					],
+					"correct": true
 				}
 			]
 		},
 		{
-			"pregunta": [
+			"question": [
 				{
 					"type": "latex",
 					"value": "¿ $A_L = P_B \\cdot h$ es o no un latex?"
@@ -68,36 +112,36 @@
 				},
 				{
 					"type": "text",
-					"value": "toma en cuenta la siguiente imagen para tu respuesta"
+					"value": "Toma en cuenta la siguiente imagen para tu respuesta"
 				}
 			],
-			"respuestas": [
+			"options": [
 				{
-					"respuesta": [
+					"contents": [
 						{
 							"type": "text",
 							"value": "todo está ok"
 						}
 					],
-					"correcta": true
+					"correct": true
 				},
 				{
-					"respuesta": [
+					"contents": [
 						{
 							"type": "latex",
-							"value": "$A_L = P_B \\cdot h$  no es un latex como lo prueba la siguiente imagen"
+							"value": "$A_L = P_B \\cdot h$ no es un latex como lo prueba la siguiente imagen"
 						},
 						{
 							"type": "imagen",
 							"value": "http://jgdesing.com/demo/img30x50.svg"
 						}
 					],
-					"correcta": true
+					"correct": false
 				}
 			]
 		},
 		{
-			"pregunta": [
+			"question": [
 				{
 					"type": "latex",
 					"value": "¿ $A_L = P_B \\cdot h$ es o no un latex?"
@@ -108,21 +152,21 @@
 				},
 				{
 					"type": "text",
-					"value": "toma en cuenta la siguiente imagen para tu respuesta"
+					"value": "Toma en cuenta la siguiente imagen para tu respuesta"
 				}
 			],
-			"respuestas": [
+			"options": [
 				{
-					"respuesta": [
+					"contents": [
 						{
 							"type": "text",
 							"value": "todo está ok"
 						}
 					],
-					"correcta": true
+					"correct": true
 				},
 				{
-					"respuesta": [
+					"contents": [
 						{
 							"type": "latex",
 							"value": "$A_L = P_B \\cdot h$  no es un latex como lo prueba la siguiente imagen"
@@ -132,7 +176,7 @@
 							"value": "http://jgdesing.com/demo/img30x50.svg"
 						}
 					],
-					"correcta": false
+					"correct": false
 				}
 			]
 		}

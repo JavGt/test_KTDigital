@@ -1,0 +1,41 @@
+{
+	"question": [
+		{
+			"type": "texto",
+			"value": "¿Esta formula es correcta?"
+		},
+		{
+			"type": "latex",
+			"value": "$A_B = 2 a^2$"
+		},
+		{
+			"type": "text",
+			"value": "Toma en cuenta la información dada"
+		}
+	],
+	"options": [
+		{
+			"correct": true,
+			"contents": [
+				{
+					"type": "text",
+					"value": "La formula es correcta"
+				}
+			]
+		},
+		{
+			"correct": false,
+			"contents": [
+				{
+					"type": "latex",
+					"value": "$A_L = P_B \\cdot  h$  "
+				},
+				{
+					"type": "text",
+					"value": "no es un latex como lo prueba la siguiente imagen"
+				}
+			]
+		}
+	],
+	"availableOptions": 1
+}

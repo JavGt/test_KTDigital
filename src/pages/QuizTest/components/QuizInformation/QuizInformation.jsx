@@ -1,21 +1,23 @@
 import { Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import { Box } from '@mui/system';
+import { styled } from '@mui/material/styles';
 
 const QuizInformation = ({ numQuestion, maxQuestions, maxAnswers }) => {
 	return (
-		<QuizInformationStyled>
+		<Box>
 			<Typography>
-				<Typography fontWeight={700} component='span'>
+				<Typography fontWeight={700} variant='body1' component='span'>
 					Pregunta:{' '}
+					<Typography variant='body1' component='span'>
+						{`${numQuestion} / ${maxQuestions}`}
+					</Typography>
 				</Typography>
-				{`${numQuestion} / ${maxQuestions}`}
 			</Typography>
-			<Typography fontWeight={700}>
+			<Typography variant='body1' fontWeight={700}>
 				Opciones disponibles:
-				<Typography component='span'>{` ${maxAnswers}`}</Typography>
+				<Typography variant='body1' component='span'>{` ${maxAnswers}`}</Typography>
 			</Typography>
-		</QuizInformationStyled>
+		</Box>
 	);
 };
 
@@ -26,10 +28,5 @@ QuizInformation.defaultProps = {
 	questionText: '',
 	maxAnswers: 1,
 };
-
-export const QuizInformationStyled = styled(Box)(({ theme }) => ({
-	textAlign: 'center',
-	marginBottom: theme.spacing(2),
-}));
 
 export default QuizInformation;

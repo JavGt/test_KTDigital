@@ -1,31 +1,33 @@
 import { useEffect, useState } from 'react';
 
-export const useTemporizador = segundos => {
-	const [segundosRestantes, setSegundosRestantes] = useState(segundos);
+export const useTemporizador = time => {
+	const [timeRemaining, setTimeRemaining] = useState(time);
 
-	let intervalo = null;
-
-	const stop = () => {
-		clearInterval(intervalo);
-	};
-
-	const addTime = () => {
-		setSegundosRestantes(segundosRestantes + 1);
-	};
-
-	const start = () => {
-		intervalo = setInterval(() => {
-			setSegundosRestantes(segundosRestantes - 1);
-		}, 1000);
-	};
+	const [minutos, setMinutos] = useState(`${Math.floor(time / 60)}`);
+	const [segundos, setSegundos] = useState(`${time % 60}`);
+	const [finalizado, setFinalizado] = useState(false);
 
 	useEffect(() => {
-		intervalo = setInterval(() => {
-			setSegundosRestantes(segundosRestantes => segundosRestantes - 1);
+		const intervalo = setInterval(() => {
+			setTimeRemaining(s => (s === 0 ? 0 : s - 1));
 		}, 1000);
 
-		return () => stop();
-	}, [segundos]);
+		return () => clearInterval(intervalo);
+	}, []);
 
-	return { segundosRestantes };
+	useEffect(() => {
+		setMinutos(() => {
+			const minutos = Math.floor(timeRemaining / 60);
+			return minutos < 10 ? `0${minutos}` : minutos;
+		});
+
+		setSegundos(() => {
+			const segundos = timeRemaining % 60;
+			return segundos < 10 ? `0${segundos}` : segundos;
+		});
+
+		if (timeRemaining === 0) setFinalizado(true);
+	}, [timeRemaining]);
+
+	return { minutos, timeRemaining, segundos, finalizado };
 };
