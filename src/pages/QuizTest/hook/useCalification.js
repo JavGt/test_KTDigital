@@ -18,7 +18,13 @@ export const useCalification = () => {
 
 			const qualification = Math.floor((answersObtained * 100) / correctAnswers);
 
-			return { selectedOptions, qualification, question: idx };
+			return {
+				selectedOptions,
+				qualification,
+				question: idx,
+				correctAnswers,
+				answersObtained,
+			};
 		});
 
 		const finalScore = Math.floor(

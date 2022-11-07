@@ -1,33 +1,57 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
-export const useTemporizador = time => {
-	const [timeRemaining, setTimeRemaining] = useState(time);
+/**
+ * @param {number} tiempo // seconds
+ * @param {boolean} autoplay
+ * @returns {{minutes: string, seconds: string, hours: string, finished: boolean}}
+ */
 
-	const [minutos, setMinutos] = useState(`${Math.floor(time / 60)}`);
-	const [segundos, setSegundos] = useState(`${time % 60}`);
-	const [finalizado, setFinalizado] = useState(false);
+// Pasos:
+// convertir los segundos a mili segundos
+// Almacenar la conversion en una referencia
+// crear un estado donde se almacene el tiempo restante
+// crear un estado donde se almacene si el tiempo termino
+// crear un estado donde se almacene si el tiempo esta corriendo
+// crear un estado donde se almacene si el tiempo esta pausado
+
+export const useChronometer = (time = 60, autoplay = false) => {
+	const originalTime = useRef(time * 100).current;
+
+	const [remainingTime, setRemainingTime] = useState(time * 100);
+
+	// Actions
+	const [finished, setFinished] = useState(false);
+	const [running, setRunning] = useState(autoplay);
+	const [paused, setPaused] = useState(false);
+
+	// format time
+	const [hours, setHours] = useState('00');
+	const [minutes, setMinutes] = useState('00');
+	const [seconds, setSeconds] = useState('00');
+
+	let interval = useRef(null);
+
+	const onStop = () => {
+		clearInterval(interval.current);
+	};
+
+	const onPlay = () => {
+		interval.current = setInterval(() => {
+			setRemainingTime(remainingTime => remainingTime - 50);
+		}, 500);
+	};
 
 	useEffect(() => {
-		const intervalo = setInterval(() => {
-			setTimeRemaining(s => (s === 0 ? 0 : s - 1));
-		}, 1000);
+		if (running) {
+			onPlay();
+		} else {
+			onStop();
+		}
+		return () => onStop();
+	}, [running]);
 
-		return () => clearInterval(intervalo);
-	}, []);
-
-	useEffect(() => {
-		setMinutos(() => {
-			const minutos = Math.floor(timeRemaining / 60);
-			return minutos < 10 ? `0${minutos}` : minutos;
-		});
-
-		setSegundos(() => {
-			const segundos = timeRemaining % 60;
-			return segundos < 10 ? `0${segundos}` : segundos;
-		});
-
-		if (timeRemaining === 0) setFinalizado(true);
-	}, [timeRemaining]);
-
-	return { minutos, timeRemaining, segundos, finalizado };
+	return {
+		remainingTime,
+		originalTime,
+	};
 };

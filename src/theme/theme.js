@@ -54,7 +54,7 @@ const theme = createTheme({
 		},
 	},
 	typography: {
-		fontFamily: 'raleway',
+		fontFamily: 'Raleway',
 		fontSize: 15,
 	},
 	shape: {

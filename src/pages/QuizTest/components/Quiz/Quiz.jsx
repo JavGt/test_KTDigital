@@ -2,11 +2,12 @@ import { styled } from '@mui/material/styles';
 import QuizData from '#/quiz.json';
 import { TitleExercise } from '../TitleExercise';
 import { QuizInformation } from '../QuizInformation';
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useLayoutEffect, useReducer, useState } from 'react';
 import { Box, Grid, Stack } from '@mui/material';
 import { SectionQuestion } from '../SectionQuestion';
 import { SectionAnswers } from '../SectionAnswers';
 import { useCalification } from '../../hook/useCalification';
+
 import {
 	emptyQuizQuestion,
 	quizReducer,
@@ -36,7 +37,18 @@ const Quiz = ({ data }) => {
 		};
 
 		setQuestionIndex(idx => ++idx);
-		setQuestionsAnswered(prev => [...prev, option]);
+		setQuestionsAnswered(prev => {
+			const newState = [...prev, option];
+			localStorage.setItem(
+				'questionsAnswered',
+				JSON.stringify({
+					index: questionIndex,
+					questionsAnswered: newState,
+				})
+			);
+
+			return newState;
+		});
 	};
 
 	const formatQuestion = () => {
@@ -55,6 +67,17 @@ const Quiz = ({ data }) => {
 		setQuizResult(result);
 	};
 
+	// useLayoutEffect(() => {
+	// 	const data = localStorage.key('questionsAnswered');
+
+	// 	if (data) {
+	// 		const data = localStorage.getItem('questionsAnswered');
+	// 		const dataParsed = JSON.parse(data);
+	// 		setQuestionIndex(dataParsed.index + 1);
+	// 		setQuestionsAnswered(dataParsed.questionsAnswered);
+	// 	}
+	// }, []);
+
 	// Almacena la pregunta en dicha posición
 	useEffect(() => {
 		if (data.cuerpo.length - 1 < questionIndex) handleComplete();
@@ -63,7 +86,7 @@ const Quiz = ({ data }) => {
 
 	return (
 		<QuizStyled>
-			{Object.keys(quizResult).length > 0 ? (
+			{!!Object.keys(quizResult).length ? (
 				<ViewFinish score={quizResult} />
 			) : (
 				<>
@@ -80,7 +103,7 @@ const Quiz = ({ data }) => {
 							maxAnswers={quizQuestion.availableOptions}
 						/>
 					</Stack>
-					<Timer time={10} setFinish={handleComplete} />
+					<Timer time={60} setFinish={handleComplete} />
 
 					<Grid container spacing={2}>
 						<Grid md={6} xs={12} item>

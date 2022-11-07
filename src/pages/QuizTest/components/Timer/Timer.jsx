@@ -1,13 +1,13 @@
-import { useTemporizador } from '@/hooks/useTimer';
+import { useChronometer } from '@/hooks/useTimer';
 import { LinearProgress, Stack, Typography } from '@mui/material';
 import { useEffect } from 'react';
 
 const Timer = ({ time, setFinish }) => {
-	const { minutos, timeRemaining, segundos, finalizado } = useTemporizador(time);
+	const { remainingTime, originalTime } = useChronometer(time, true);
 
-	useEffect(() => {
-		if (finalizado) setFinish();
-	}, [finalizado]);
+	// useEffect(() => {
+	// 	// if (finalizado) setFinish();
+	// }, [finished]);
 
 	return (
 		<Stack
@@ -23,18 +23,15 @@ const Timer = ({ time, setFinish }) => {
 				position: 'sticky',
 				top: 10,
 			}}>
-			<LinearProgress
+			{/* <LinearProgress
+				color={seconds > time / 2 ? 'success' : seconds > time / 3 ? 'warning' : 'error'}
 				sx={{ flexGrow: 1 }}
 				variant='determinate'
-				value={(timeRemaining * 100) / time}
-			/>
+				value={(time - timeRemaining) * (100 / time)}
+			/> */}
 
 			<Typography variant='button' fontWeight={800}>
-				{time
-					? finalizado
-						? 'Tiempo Finalizado'
-						: `${minutos}:${segundos}`
-					: 'Sin Tiempo'}
+				{remainingTime}
 			</Typography>
 		</Stack>
 	);

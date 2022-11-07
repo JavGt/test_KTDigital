@@ -6,7 +6,8 @@ import { typeFactory } from '@/utils/typeFactory';
 import { memo } from 'react';
 
 const AnswerOption = ({ option, onSelected, index, selected }) => {
-	const handleSelected = () => onSelected({ ...option, index });
+	const { contents } = option;
+	const handleSelected = () => onSelected({ contents, index });
 
 	return (
 		<ButtonAnswer selected={selected} onClick={handleSelected}>
@@ -15,7 +16,7 @@ const AnswerOption = ({ option, onSelected, index, selected }) => {
 					({getAlphabet(index)})
 				</Typography>
 				<Stack alignItems='center'>
-					{option.contents.map((opt, idx) => (
+					{contents.map((opt, idx) => (
 						<Fragment key={idx}>{typeFactory(opt)}</Fragment>
 					))}
 				</Stack>
