@@ -1,57 +1,98 @@
 import { useEffect, useState, useRef } from 'react';
 
 /**
- * @param {number} tiempo // seconds
+ * @param {number} time // seconds
  * @param {boolean} autoplay
- * @returns {{minutes: string, seconds: string, hours: string, finished: boolean}}
+ * @returns {
+ * 	{
+ * 		finished,
+ * 		running,
+ * 		paused,
+ * 		onReset,
+ * 		onPlay,
+ * 		onStop,
+ * 		remainingTime,
+ * 		originalTime,
+ * 		hours,
+ * 		minutes,
+ * 		seconds,
+ * 		fullTime,
+ *  }
+ * }
  */
 
-// Pasos:
-// convertir los segundos a mili segundos
-// Almacenar la conversion en una referencia
-// crear un estado donde se almacene el tiempo restante
-// crear un estado donde se almacene si el tiempo termino
-// crear un estado donde se almacene si el tiempo esta corriendo
-// crear un estado donde se almacene si el tiempo esta pausado
-
 export const useChronometer = (time = 60, autoplay = false) => {
-	const originalTime = useRef(time * 100).current;
+	const originalTime = useRef(time * 1000).current;
 
-	const [remainingTime, setRemainingTime] = useState(time * 100);
+	const [remainingTime, setRemainingTime] = useState(time * 1000);
 
 	// Actions
 	const [finished, setFinished] = useState(false);
-	const [running, setRunning] = useState(autoplay);
+	const [running, setRunning] = useState(false);
 	const [paused, setPaused] = useState(false);
-
-	// format time
-	const [hours, setHours] = useState('00');
-	const [minutes, setMinutes] = useState('00');
-	const [seconds, setSeconds] = useState('00');
 
 	let interval = useRef(null);
 
 	const onStop = () => {
-		clearInterval(interval.current);
+		if (interval.current) clearInterval(interval.current);
+
+		setRunning(false);
+		setPaused(true);
 	};
 
 	const onPlay = () => {
-		interval.current = setInterval(() => {
-			setRemainingTime(remainingTime => remainingTime - 50);
-		}, 500);
+		if (remainingTime === 0) return;
+
+		if (!running)
+			interval.current = setInterval(
+				() => setRemainingTime(remainingTime => remainingTime - 1000),
+				1000
+			);
+
+		setRunning(true);
 	};
 
+	const onReset = () => setRemainingTime(originalTime);
+
 	useEffect(() => {
-		if (running) {
-			onPlay();
-		} else {
+		autoplay && onPlay();
+
+		return () => onStop();
+	}, []);
+
+	useEffect(() => {
+		if (remainingTime <= 0) {
+			setFinished(true);
 			onStop();
 		}
-		return () => onStop();
-	}, [running]);
+	}, [remainingTime]);
+
+	// format time
+	const formateTime = time => {
+		const validateTime = time => Math.floor(time).toString().padStart(2, '0');
+
+		const hours = validateTime(time / 1000 / 60 / 60);
+		const minutes = validateTime((time / 1000 / 60) % 60);
+		const seconds = validateTime((time / 1000) % 60);
+
+		const fullTime =
+			hours > 0 ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`;
+
+		return { hours, minutes, seconds, fullTime };
+	};
+
+	const percentage = (originalTime - remainingTime) * (100 / originalTime);
 
 	return {
+		percentage,
+		finished,
+		running,
+		paused,
+		onReset,
+		onPlay,
+		onStop,
 		remainingTime,
 		originalTime,
+		...formateTime(remainingTime),
 	};
 };

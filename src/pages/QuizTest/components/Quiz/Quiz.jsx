@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import QuizData from '#/quiz.json';
 import { TitleExercise } from '../TitleExercise';
 import { QuizInformation } from '../QuizInformation';
-import { useEffect, useLayoutEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { Box, Grid, Stack } from '@mui/material';
 import { SectionQuestion } from '../SectionQuestion';
 import { SectionAnswers } from '../SectionAnswers';
@@ -13,7 +13,9 @@ import {
 	quizReducer,
 	typesReducer,
 } from '../../Reducer/DataQuiz.reducer';
+
 import { ViewFinish } from '../../ViewFinish';
+
 import { Timer } from '../Timer';
 
 export const getAvailableOptions = options =>
@@ -37,18 +39,7 @@ const Quiz = ({ data }) => {
 		};
 
 		setQuestionIndex(idx => ++idx);
-		setQuestionsAnswered(prev => {
-			const newState = [...prev, option];
-			localStorage.setItem(
-				'questionsAnswered',
-				JSON.stringify({
-					index: questionIndex,
-					questionsAnswered: newState,
-				})
-			);
-
-			return newState;
-		});
+		setQuestionsAnswered(prev => [...prev, option]);
 	};
 
 	const formatQuestion = () => {
@@ -66,17 +57,6 @@ const Quiz = ({ data }) => {
 		const result = calificationQuiz(questionsAnswered, data.cuerpo);
 		setQuizResult(result);
 	};
-
-	// useLayoutEffect(() => {
-	// 	const data = localStorage.key('questionsAnswered');
-
-	// 	if (data) {
-	// 		const data = localStorage.getItem('questionsAnswered');
-	// 		const dataParsed = JSON.parse(data);
-	// 		setQuestionIndex(dataParsed.index + 1);
-	// 		setQuestionsAnswered(dataParsed.questionsAnswered);
-	// 	}
-	// }, []);
 
 	// Almacena la pregunta en dicha posición
 	useEffect(() => {
@@ -103,7 +83,7 @@ const Quiz = ({ data }) => {
 							maxAnswers={quizQuestion.availableOptions}
 						/>
 					</Stack>
-					<Timer time={60} setFinish={handleComplete} />
+					<Timer time={30} setFinish={handleComplete} />
 
 					<Grid container spacing={2}>
 						<Grid md={6} xs={12} item>
@@ -126,9 +106,7 @@ const Quiz = ({ data }) => {
 	);
 };
 
-Quiz.defaultProps = {
-	data: QuizData,
-};
+Quiz.defaultProps = { data: QuizData };
 
 const QuizStyled = styled(Box)(({ theme }) => ({
 	position: 'relative',

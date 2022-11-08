@@ -57,7 +57,7 @@
 						},
 						{
 							"type": "imagen",
-							"value": "http://jgdesing.com/demo/img30x50.svg"
+							"value": "src/assets/img/icons/growth-chart.png"
 						}
 					],
 					"correct": false
@@ -108,7 +108,7 @@
 				},
 				{
 					"type": "imagen",
-					"value": "http://jgdesing.com/demo/img30x50.svg"
+					"value": "src/assets/img/icons/growth-chart.png"
 				},
 				{
 					"type": "text",
@@ -133,7 +133,7 @@
 						},
 						{
 							"type": "imagen",
-							"value": "http://jgdesing.com/demo/img30x50.svg"
+							"value": "src/assets/img/icons/growth-chart.png"
 						}
 					],
 					"correct": false
@@ -148,7 +148,7 @@
 				},
 				{
 					"type": "imagen",
-					"value": "http://jgdesing.com/demo/img30x50.svg"
+					"value": "src/assets/img/icons/growth-chart.png"
 				},
 				{
 					"type": "text",
@@ -173,7 +173,7 @@
 						},
 						{
 							"type": "imagen",
-							"value": "http://jgdesing.com/demo/img30x50.svg"
+							"value": "src/assets/img/icons/growth-chart.png"
 						}
 					],
 					"correct": false

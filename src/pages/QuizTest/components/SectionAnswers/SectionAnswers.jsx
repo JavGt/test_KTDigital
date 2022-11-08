@@ -8,14 +8,11 @@ const SectionAnswers = ({ options, onNext, availableOptions }) => {
 
 	const enableNext = chosenOptions.length > 0;
 
-	// Esta función se ejecuta cuando se selecciona una opción
 	const handleOptionSelected = option => {
 		setChosenOptions(prev => {
-			// Verificar si la opción seleccionada ya existe
 			const exists = prev.find(opt => opt?.index === option.index);
 			if (exists) return prev.filter(opt => opt?.index !== option.index);
 
-			// función para validar la cantidad de opciones disponibles
 			if (prev.length === availableOptions) prev.shift();
 
 			return [...prev, option];
@@ -38,7 +35,7 @@ const SectionAnswers = ({ options, onNext, availableOptions }) => {
 					{options.map((opt, idx) => (
 						<AnswerOption
 							key={idx}
-							selected={chosenOptions.find(chosen => chosen?.index === idx)}
+							selected={chosenOptions.find(opt => opt?.index === idx)}
 							onSelected={handleOptionSelected}
 							option={opt}
 							index={idx}
@@ -53,10 +50,12 @@ const SectionAnswers = ({ options, onNext, availableOptions }) => {
 					color={'secondary'}
 					onClick={handleNext}
 					sx={{
-						display: 'flex',
 						position: 'sticky',
 						marginLeft: 'auto',
 						bottom: 8,
+						backgroundColor: theme => theme.palette.primary.main + '20',
+						backdropFilter: 'blur(5px)',
+						color: theme => theme.palette.primary.main,
 					}}
 					aria-label='next'>
 					Siguiente

@@ -3,7 +3,7 @@ import { getAvailableOptions } from '../components/Quiz/Quiz';
 export const useCalification = () => {
 	const calificationQuiz = (questionsAnswered, originalData) => {
 		const questions = originalData.map((qtn, idx) => {
-			const { options } = qtn;
+			const { options, question } = qtn;
 
 			const { selectedOptions } = questionsAnswered[idx] ?? {
 				selectedOptions: [],
@@ -21,9 +21,9 @@ export const useCalification = () => {
 			return {
 				selectedOptions,
 				qualification,
-				question: idx,
 				correctAnswers,
 				answersObtained,
+				question,
 			};
 		});
 
