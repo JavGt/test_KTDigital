@@ -8,6 +8,7 @@ export const typeFactory = item => {
 		case 'texto':
 			return <Typography variant='body1'>{value}</Typography>;
 		case 'imagen':
+		case 'image':
 			return <img src={value} alt='imagen' width={200} />;
 		case 'latex':
 			return (

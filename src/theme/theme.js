@@ -1,5 +1,7 @@
 import { createTheme } from '@mui/material/styles';
+
 const mode = 'light';
+
 const colors = {
 	primary: '#06038D',
 	secondary: '#071D49',
@@ -29,6 +31,7 @@ const theme = createTheme({
 		MuiCssBaseline: { styleOverrides: { body: { backgroundColor: colors.light } } },
 	},
 	palette: {
+		mode,
 		primary: { main: colors.primary },
 		secondary: { main: colors.secondary },
 		tertiary: { main: colors.tertiary },
@@ -53,13 +56,8 @@ const theme = createTheme({
 			alternate3: { main: colors.bookDemo.alternate3 },
 		},
 	},
-	typography: {
-		fontFamily: 'Raleway',
-		fontSize: 15,
-	},
-	shape: {
-		borderRadius: 15,
-	},
+	typography: { fontFamily: 'Albert Sans', fontSize: 15 },
+	shape: { borderRadius: 3 },
 });
 
 export { theme };

@@ -4,6 +4,7 @@ import { LayoutReader } from '@/components/Layout/LayoutReader';
 import { Book } from '@/pages/Book';
 import { BookReader } from '@/pages/BookReader';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { CreateQuiz } from '@/pages/CreateQuiz';
 
 export const RoutesPrivate = createBrowserRouter([
 	{
@@ -27,6 +28,10 @@ export const RoutesPrivate = createBrowserRouter([
 	{
 		path: '/test',
 		element: <QuizTest />,
+	},
+	{
+		path: '/create-quiz',
+		element: <CreateQuiz />,
 	},
 ]);
 
