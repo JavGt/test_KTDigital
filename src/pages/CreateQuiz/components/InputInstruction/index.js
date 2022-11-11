@@ -1,1 +1,1 @@
-export { default as InputInstruction } from './InputInstruction';
+export { default as MultipleOptions } from './InputInstruction';

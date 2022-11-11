@@ -1,15 +1,18 @@
-import { Box, Divider, Typography } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 
-const HeaderCreateQuiz = () => {
+export default function HeaderCreateQuiz() {
 	return (
 		<>
-			<Typography variant='h2' fontWeight={800} component='h1' gutterBottom>
-				Creación de Quizzes. 🚀
+			<Typography variant='h2' fontWeight={800} component='h1'>
+				Creación de Quizzes.{' '}
+				<span role='img' aria-label='emoji'>
+					🚀
+				</span>
 			</Typography>
 
-			<Typography variant='h5' component='h2' gutterBottom>
+			<Typography variant='h5' component='h2'>
 				En esta sección podrás crear tus propios quizzes para
-				<Typography fontWeight={700} variant='h5' component='span' color='primary'>
+				<Typography fontWeight={800} variant='inherit' component='span' color='primary'>
 					{' '}
 					Ktdra.{' '}
 					<span role='img' aria-label='emoji'>
@@ -17,9 +20,7 @@ const HeaderCreateQuiz = () => {
 					</span>
 				</Typography>
 			</Typography>
-			<Divider sx={{ my: 5 }} />
+			<Divider sx={{ my: 3 }} />
 		</>
 	);
-};
-
-export default HeaderCreateQuiz;
+}

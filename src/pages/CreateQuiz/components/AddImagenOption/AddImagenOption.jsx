@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
+import { Box, Button, Divider, IconButton, Stack, Typography } from '@mui/material';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 const notes = [
-	'Para que el quiz se vea bien, debes usar imágenes de cuadriculas con máximo 100px de diferencia. Ej: 900x800 , 500x500',
-	'Puede unir texto y latex, por ejemplo: $x^2-2xy-y^2$ es el resultado de la ecuación $x^2-2xy-y^2=0$',
+	'Para que el quiz se vea bien, debes usar imágenes de cuadradas con máximo 100px de diferencia. Ej: 900x800 , 500x500',
 ];
 
 const AddImagenOption = ({ setValue }) => {
@@ -25,32 +24,54 @@ const AddImagenOption = ({ setValue }) => {
 				webkitRelativePath: file.webkitRelativePath,
 			};
 
-			setValue(URL.createObjectURL(e.target.files[0]));
 			setImage(data);
+			setValue(URL.createObjectURL(e.target.files[0]));
 			setPreview(URL.createObjectURL(e.target.files[0]));
 		}
 	};
 
 	return (
 		<>
-			<Stack direction='row' alignItems='center' spacing={2}>
-				<Button variant='contained' component='label'>
-					Upload
-					<input onChange={handleImageChange} hidden accept='image/*' type='file' />
-				</Button>
-				<IconButton color='primary' aria-label='upload picture' component='label'>
+			<Stack direction='column' alignItems='center' spacing={2}>
+				<IconButton
+					sx={{
+						width: 100,
+						height: 100,
+						border: '1px solid #ccc',
+					}}
+					size='large'
+					color='primary'
+					aria-label='upload picture'
+					component='label'
+				>
 					<input onChange={handleImageChange} hidden accept='image/*' type='file' />
 					<PhotoCamera />
 				</IconButton>
+
+				<Typography variant='h6' component='h2'>
+					{preview ? 'Seleccionar otra imagen' : 'Click para cargar una imagen'}
+				</Typography>
+
+				{preview && (
+					<>
+						<Box my={2} width='100%'>
+							<Divider />
+						</Box>
+
+						<Box component='figure' sx={{ '& img': { borderRadius: 1 } }}>
+							<img width={200} height={200} src={preview} alt='preview' />
+						</Box>
+
+						<Typography variant='h6' component='figcaption' fontWeight={800}>
+							{image.name}
+						</Typography>
+					</>
+				)}
 			</Stack>
 
-			<pre>{JSON.stringify(image, null, 2)}</pre>
-
-			{preview && (
-				<picture>
-					<img width={500} src={preview} alt='preview' />
-				</picture>
-			)}
+			<Box my={2} width='100%'>
+				<Divider />
+			</Box>
 
 			<Box>
 				<Typography component={'address'}>Notas</Typography>

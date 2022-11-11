@@ -4,7 +4,6 @@ import {
 	InputLabel,
 	Select,
 	MenuItem,
-	Box,
 	Button,
 	Stack,
 	Typography,
@@ -15,7 +14,7 @@ import { AddImagenOption } from '../AddImagenOption';
 import { AddLatexOption } from '../AddLatexOption';
 import { instructionContext } from '../InputInstruction/InputInstruction';
 
-const objType = [
+export const objType = [
 	{
 		id: 0,
 		name: 'Selecciona una opción',
@@ -42,33 +41,23 @@ const objType = [
 	},
 ];
 
-const SelectType = () => {
-	return (
-		<>
-			<Selector />
-			<AddOption />
-		</>
-	);
-};
-
-const Selector = () => {
-	const { type, setType } = useContext(instructionContext);
-
+export const Selector = ({ type, setType, options }) => {
 	const handleChange = event => setType(event.target.value);
 
 	return (
 		<FormControl>
-			<InputLabel id='demo-simple-select-label'>
+			<InputLabel id='outlined-input-instructions'>
 				Selecciona el tipo de contenido
 			</InputLabel>
 
 			<Select
 				value={type}
 				onChange={handleChange}
-				labelId='demo-simple-select-label'
-				id='demo-simple-select'
-				label='Selecciona el tipo de contenido'>
-				{objType.map(item => (
+				labelId='outlined-input-instructions'
+				id='outlined-input-instructions'
+				label='Selecciona el tipo de contenido'
+			>
+				{options.map(item => (
 					<MenuItem disabled={item.disabled} key={item.id} value={item.id}>
 						{item.name}
 					</MenuItem>
@@ -77,23 +66,6 @@ const Selector = () => {
 		</FormControl>
 	);
 };
-
-const AddOption = () => {
-	const { type } = useContext(instructionContext);
-
-	return !!type ? (
-		<Box
-			sx={{
-				backgroundColor: 'background.paper',
-				p: 5,
-				borderRadius: theme => theme.shape.borderRadius,
-				marginTop: 2,
-			}}>
-			<FactoryOption type={type} />
-		</Box>
-	) : null;
-};
-
 const withOption = Component => {
 	return function () {
 		const { type, setType, dispatch } = useContext(instructionContext);
@@ -106,6 +78,7 @@ const withOption = Component => {
 			if (type === 0) return alert('No se puede guardar una opción vacía');
 
 			dispatch({ type: 'add', payload: { type: objType[type].value, value: option } });
+
 			setType(0);
 		};
 
@@ -114,13 +87,15 @@ const withOption = Component => {
 		return (
 			<>
 				<Component value={option} setValue={setOptionState} />
-				<Stack mt={2} direction='row' gap={2} justifyContent='flex-end'>
-					<BtnStyle onClick={handleCancel} variant='contained' color='error'>
+
+				<Stack mt={2} direction='row' gap={'8px'} justifyContent='flex-end'>
+					<Button onClick={handleCancel} variant='outlined' color='error'>
 						Cancelar
-					</BtnStyle>
-					<BtnStyle onClick={handleSave} variant='contained' color='success'>
+					</Button>
+
+					<Button onClick={handleSave} variant='outlined' color='success'>
 						Agregar
-					</BtnStyle>
+					</Button>
 				</Stack>
 			</>
 		);
@@ -131,26 +106,28 @@ const TextOption = withOption(AddTextOption, 'text');
 const ImagenOption = withOption(AddImagenOption, 'image');
 const LatexOption = withOption(AddLatexOption, 'latex');
 
-const FactoryOption = ({ type }) => {
-	return type === 1 ? (
-		<TextOption />
-	) : type === 2 ? (
-		<ImagenOption />
-	) : type === 3 ? (
-		<LatexOption />
-	) : (
-		<Typography variant='h5' component='h2' gutterBottom fontWeight={600}>
-			Opción no disponible. 😥
-		</Typography>
+export const AddOption = ({ type }) => {
+	return (
+		<AddOptionStyle>
+			{type === 1 ? (
+				<TextOption />
+			) : type === 2 ? (
+				<ImagenOption />
+			) : type === 3 ? (
+				<LatexOption />
+			) : (
+				<Typography variant='h5' component='h2' gutterBottom fontWeight={600}>
+					Opción no disponible. 😥
+				</Typography>
+			)}
+		</AddOptionStyle>
 	);
 };
 
-const BtnStyle = styled(Button)(({ theme, color }) => ({
-	borderRadius: 0,
-	backgroundColor: theme.palette[color].main,
-	color: theme.palette.common.white,
-	borderRadius: 30,
-	padding: theme.spacing(1, 3),
+const AddOptionStyle = styled('div')(({ theme }) => ({
+	backgroundColor: theme.palette.background.paper,
+	padding: theme.spacing(3),
+	borderRadius: theme.shape.borderRadius,
+	border: `1px solid`,
+	borderColor: theme.palette.grey[300],
 }));
-
-export default SelectType;

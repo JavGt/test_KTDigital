@@ -1,63 +1,136 @@
 import { createTheme } from '@mui/material/styles';
+import { blue } from '@mui/material/colors';
 
 const mode = 'light';
 
 const colors = {
+	primaryDark: '#040262',
 	primary: '#06038D',
+	primaryLight: '#3735a3',
+
+	secondaryDark: '#041433',
 	secondary: '#071D49',
+	secondaryLight: '#384a6d',
+
+	tertiaryDark: '#b24900',
 	tertiary: '#FF6900',
+	tertiaryLight: '#ff8733',
+
+	alternateDark: '#b28800',
 	alternate: '#FFC300',
-	black: '#000814',
+	alternateLight: '#ffcf33',
+
+	text: '#00050e',
+	subText: '#333943',
+
+	white: '#FFFFFF',
+	background: '#F3F6F9',
+
+	successDark: '#277e33',
 	success: '#39B54A',
+	successLight: '#60c36e',
+
+	errorDark: '#871b1f',
 	error: '#C1272D',
+	errorLight: '#cd5257',
+
+	alertDark: '#b29310',
 	alert: '#FFD217',
-	light: '#F5F4FA',
-	gray_light: '#F2F4F8',
+	alertLight: '#ffdb45',
+
+	greyDark: '#85848a',
 	gray: '#BEBDC6',
-	bookDemo: {
-		primary: '#6cbd45',
-		secondary: '#96cc78',
-		tertiary: '#bddda7',
-		variant: '#e1e8d7',
-		alternate: '#0082c9',
-		alternate1: '#2698d4',
-		alternate2: '#83b7e3',
-		alternate3: '#c4daf1',
-	},
+	greyLight: '#cbcad1',
 };
 
 const theme = createTheme({
-	components: {
-		MuiCssBaseline: { styleOverrides: { body: { backgroundColor: colors.light } } },
-	},
 	palette: {
 		mode,
-		primary: { main: colors.primary },
-		secondary: { main: colors.secondary },
-		tertiary: { main: colors.tertiary },
-		alternate: { main: colors.alternate },
+
+		primary: {
+			main: colors.primary,
+			dark: colors.primaryDark,
+			light: colors.primaryLight,
+		},
+
+		secondary: {
+			main: colors.secondary,
+			dark: colors.secondaryDark,
+			light: colors.secondaryLight,
+		},
+
+		tertiary: {
+			main: colors.tertiary,
+			dark: colors.tertiaryDark,
+			light: colors.tertiaryLight,
+		},
+
+		alternate: {
+			main: colors.alternate,
+			dark: colors.alternateDark,
+			light: colors.alternateLight,
+		},
+
+		background: {
+			default: colors.background,
+			paper: colors.white,
+		},
+
 		common: {
-			white: colors.light,
+			white: colors.white,
 			black: colors.black,
 			gray: colors.gray,
 			gray_light: colors.gray_light,
 		},
-		error: { main: colors.error },
-		success: { main: colors.success },
-		warning: { main: colors.alert },
-		book: {
-			primary: { main: colors.bookDemo.primary },
-			secondary: { main: colors.bookDemo.secondary },
-			tertiary: { main: colors.bookDemo.tertiary },
-			variant: { main: colors.bookDemo.variant },
-			alternate: { main: colors.bookDemo.alternate },
-			alternate1: { main: colors.bookDemo.alternate1 },
-			alternate2: { main: colors.bookDemo.alternate2 },
-			alternate3: { main: colors.bookDemo.alternate3 },
+		divider: colors.gray,
+
+		success: {
+			main: colors.success,
+			dark: colors.successDark,
+			light: colors.successLight,
+		},
+		error: {
+			main: colors.error,
+			dark: colors.errorDark,
+			light: colors.errorLight,
+		},
+		warning: {
+			main: colors.alert,
+			dark: colors.alertDark,
+			light: colors.alertLight,
+		},
+		info: {
+			main: blue[500],
+		},
+		text: {
+			primary: colors.text,
 		},
 	},
-	typography: { fontFamily: 'Albert Sans', fontSize: 15 },
-	shape: { borderRadius: 3 },
+	typography: {
+		htmlFontSize: 16,
+		fontFamily: 'Albert Sans',
+		fontSize: 14,
+	},
+	shape: {
+		borderRadius: 10,
+	},
+
+	spacing: 8,
+	components: {
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					fontWeight: 500,
+					fontSize: '14px',
+					padding: '10px 24px',
+					letterSpacing: '0.1px',
+					borderRadius: 100,
+					textTransform: 'capitalize',
+					lineHeight: '20px',
+				},
+			},
+		},
+	},
 });
 
 export { theme };

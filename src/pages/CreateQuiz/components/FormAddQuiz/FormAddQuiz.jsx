@@ -1,8 +1,9 @@
 import { Button, Stack, TextField, Typography } from '@mui/material';
+import { useReducer, useState } from 'react';
+import { MultipleOptions } from '../InputInstruction';
+
 import { styled } from '@mui/material/styles';
-import { useReducer } from 'react';
-import { Form, Formik } from 'formik';
-import { InputInstruction } from '../InputInstruction';
+import { NavigateNext } from '@mui/icons-material/';
 
 export const actions = {
 	setInstructions: 'setInstructions',
@@ -21,72 +22,91 @@ const FormAddQuiz = () => {
 	const [data, dispatch] = useReducer(reducer, {});
 
 	return (
-		<>
-			<Formik
-				initialValues={{
-					quizName: '',
-					quizInstructions: [],
-				}}>
-				{({ values, handleChange, handleBlur, handleSubmit }) => (
-					<Form>
-						<ContentCampo>
-							<Typography variant='h5' component='h2' gutterBottom fontWeight={600}>
-								Título del quiz
-							</Typography>
+		<FormAddQuizStyles>
+			<InputTitle />
 
-							<TextField
-								placeholder='Ej: Actividad 1'
-								fullWidth
-								id='outlined-basic'
-								label='Nombre del quizz'
-								variant='outlined'
-							/>
-						</ContentCampo>
+			<MultipleOptions label='Instrucciones del quiz' />
 
-						<InputInstruction label={'Instrucciones del quiz'} dispatch={dispatch} />
+			<InputTime />
 
-						<ContentCampo>
-							<Typography variant='h5' component='h2' gutterBottom fontWeight={600}>
-								Tiempo de duración
-							</Typography>
-
-							<Stack direction='row' alignItems='center' spacing={2}>
-								<TextField
-									placeholder='Ej: 10'
-									id='outlined-basic'
-									label='Minutos'
-									variant='outlined'
-								/>
-								<Typography variant='h5' component='h2' gutterBottom fontWeight={600}>
-									:
-								</Typography>
-								<TextField
-									placeholder='Ej: 30'
-									id='outlined-basic'
-									label='Segundos'
-									variant='outlined'
-								/>
-							</Stack>
-							<Typography variant='body2' gutterBottom>
-								El tiempo de duración es opcional
-							</Typography>
-						</ContentCampo>
-
-						<Button variant='contained' type='submit'>
-							Submit
-						</Button>
-					</Form>
-				)}
-			</Formik>
-		</>
+			<Stack direction='row' justifyContent='flex-end'>
+				<Button endIcon={<NavigateNext />} variant='contained' type='submit'>
+					Siguiente
+				</Button>
+			</Stack>
+		</FormAddQuizStyles>
 	);
 };
 
-export const ContentCampo = styled('div')(({ theme }) => ({
-	display: 'flex',
-	flexDirection: 'column',
-	gap: 10,
-	marginBottom: 50,
+const FormAddQuizStyles = styled('div')(({ theme }) => ({
+	backgroundColor: theme.palette.background.paper,
+	padding: theme.spacing(3),
+	borderRadius: theme.shape.borderRadius,
+	border: `1px solid ${theme.palette.divider}`,
 }));
+
+const InputTime = () => {
+	const [minutes, setMinutes] = useState(0);
+	const [seconds, setSeconds] = useState(0);
+
+	return (
+		<Stack gap={2} direction='column' mb={4}>
+			<Typography variant='h5' component='h2' gutterBottom fontWeight={600}>
+				Tiempo de duración
+			</Typography>
+
+			<Stack direction='row' alignItems='center' spacing={2}>
+				<TextField
+					placeholder='Ej: 10'
+					id='outlined-basic'
+					label='Minutos'
+					onChange={e => setMinutes(e.target.value)}
+					value={minutes}
+					variant='outlined'
+				/>
+
+				<Typography variant='h5' component='h2' gutterBottom fontWeight={600}>
+					:
+				</Typography>
+
+				<TextField
+					value={seconds}
+					onChange={e => setSeconds(e.target.value)}
+					placeholder='Ej: 30'
+					id='outlined-basic'
+					label='Segundos'
+					variant='outlined'
+				/>
+			</Stack>
+
+			<Typography variant='body2' color='text.secondary'>
+				El tiempo de duración es opcional
+			</Typography>
+		</Stack>
+	);
+};
+
+const InputTitle = () => {
+	return (
+		<Stack gap={1} direction='column' mb={3}>
+			<Typography
+				htmlFor='outlined-input-title'
+				variant='h5'
+				component='label'
+				fontWeight={500}
+			>
+				Título del quiz
+			</Typography>
+
+			<TextField
+				id='outlined-input-title'
+				placeholder='Ej: Actividad 1'
+				label='Nombre del quiz'
+				fullWidth
+				variant='outlined'
+			/>
+		</Stack>
+	);
+};
 
 export default FormAddQuiz;

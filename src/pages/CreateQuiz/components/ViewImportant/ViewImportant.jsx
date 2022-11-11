@@ -5,60 +5,55 @@ import { styled } from '@mui/material/styles';
 export default function ViewImportant() {
 	return (
 		<>
-			<Stack
+			<Divider sx={{ my: 3 }} />
+
+			<ViewImportantStyled
 				alignItems='center'
+				gap={2}
 				justifyContent='space-between'
 				direction={{ xs: 'column', md: 'row' }}
-				sx={{
-					backgroundColor: 'background.paper',
-					p: 5,
-					borderRadius: theme => theme.shape.borderRadius,
-					boxShadow: theme => theme.shadows[1],
-				}}>
+			>
 				<Box>
-					<Typography variant='h5' component='h2' gutterBottom fontWeight={600}>
+					<Typography variant='h5' component='h2' fontWeight={600}>
 						Importante
 					</Typography>
 
 					<Divider sx={{ my: 2 }} />
 
-					<ul>
-						<Typography component={'li'} variant='subtitle1' gutterBottom>
+					<Typography component='ul' variant='body1'>
+						<Typography component='li' variant='inherit'>
 							Nota: Las instrucciones, preguntas y respuestas pueden contener texto,
 							imágenes y latex.
 						</Typography>
 
-						<Typography component={'li'} variant='subtitle1' gutterBottom>
+						<Typography component='li' variant='inherit'>
 							Recomendación: Para que el quiz se vea bien, debes usar imágenes de
 							cuadriculas con máximo 100px de diferencia. Ej:
 							<Typography
-								component={'span'}
-								variant='subtitle1'
+								component='span'
+								variant='inherit'
 								gutterBottom
 								fontWeight={700}
-								color='primary'>
+							>
 								{' '}
 								900x800 , 500x500
 							</Typography>
 						</Typography>
-					</ul>
+					</Typography>
 				</Box>
 
-				<Picture>
-					<img src={imgBook} alt='' width={200} />
-				</Picture>
-			</Stack>
-			<Divider sx={{ my: 5 }} />
+				<picture aria-label='Imagen de un libro con un lápiz y una regla'>
+					<img src={imgBook} alt='Imagen de un libro' width={100} />
+				</picture>
+			</ViewImportantStyled>
 		</>
 	);
 }
 
-const Picture = styled('picture')(({ theme }) => ({
-	'& img': {
-		transition: theme.transitions.create('transform'),
-
-		'&:hover, &:focus': {
-			transform: 'scale(1.3)',
-		},
-	},
+const ViewImportantStyled = styled(Stack)(({ theme }) => ({
+	padding: theme.spacing(3),
+	borderRadius: theme.shape.borderRadius,
+	border: '1px solid',
+	backgroundColor: theme.palette.background.paper,
+	borderColor: theme.palette.grey[300],
 }));
