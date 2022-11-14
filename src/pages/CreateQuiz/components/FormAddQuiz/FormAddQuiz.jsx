@@ -4,6 +4,7 @@ import { MultipleOptions } from '../InputInstruction';
 
 import { styled } from '@mui/material/styles';
 import { NavigateNext } from '@mui/icons-material/';
+import { AddImagenOption } from '../AddImagenOption';
 
 export const actions = {
 	setInstructions: 'setInstructions',

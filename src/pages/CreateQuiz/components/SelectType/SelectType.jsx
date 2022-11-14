@@ -41,14 +41,12 @@ export const objType = [
 	},
 ];
 
-export const Selector = ({ type, setType, options }) => {
+export const Selector = ({ type, setType, options, label }) => {
 	const handleChange = event => setType(event.target.value);
 
 	return (
 		<FormControl>
-			<InputLabel id='outlined-input-instructions'>
-				Selecciona el tipo de contenido
-			</InputLabel>
+			<InputLabel id='outlined-input-instructions'>{label}</InputLabel>
 
 			<Select
 				value={type}
@@ -102,9 +100,9 @@ const withOption = Component => {
 	};
 };
 
-const TextOption = withOption(AddTextOption, 'text');
-const ImagenOption = withOption(AddImagenOption, 'image');
-const LatexOption = withOption(AddLatexOption, 'latex');
+const TextOption = withOption(AddTextOption);
+const ImagenOption = withOption(AddImagenOption);
+const LatexOption = withOption(AddLatexOption);
 
 export const AddOption = ({ type }) => {
 	return (

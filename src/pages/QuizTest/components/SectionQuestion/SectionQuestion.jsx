@@ -12,7 +12,7 @@ const SectionQuestion = ({ question, numberQuestion, viewIdx = true }) => {
 			)}
 			<Stack height='100%' justifyContent='center' gap={2} alignItems='center'>
 				{question.map((qts, i) => (
-					<Fragment key={i}>{typeFactory(qts)}</Fragment>
+					<Fragment key={i}>{typeFactory(qts, 'quiz')}</Fragment>
 				))}
 			</Stack>
 		</Stack>

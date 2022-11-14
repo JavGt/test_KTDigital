@@ -27,7 +27,12 @@ const reducer = (state, action) => {
 };
 
 const Provider = ({ children, locked }) => {
-	const [instructions, dispatch] = useReducer(reducer, []);
+	const [instructions, dispatch] = useReducer(reducer, [
+		{
+			type: 'text',
+			value: 'value',
+		},
+	]);
 	const [type, setType] = useState(0);
 	const [options, setOptions] = useState(() =>
 		objType.filter(type => type.value !== locked)
@@ -56,13 +61,18 @@ const InputInstruction = ({ label }) => {
 				{label}
 			</Typography>
 
-			<Selector options={options} type={type} setType={setType} />
+			<Selector
+				options={options}
+				type={type}
+				setType={setType}
+				label='Selecciona el tipo de contenido'
+			/>
 
 			{type !== 0 && <AddOption type={type} />}
 
 			{instructions.length > 0 && (
 				<>
-					<Typography variant='h5' component='label' fontWeight={500}>
+					<Typography variant='body1' component='label' fontWeight={500}>
 						Instrucciones
 					</Typography>
 					{instructions.map((instruction, index) => (
@@ -95,7 +105,7 @@ const ViewOption = ({ option, index }) => {
 			justifyContent={'space-between'}
 		>
 			<Typography variant='body1' component='p' fontWeight={600}>
-				{index + 1}.-
+				{index + 1}
 			</Typography>
 
 			<Box flexGrow={1}>{typeFactory(option)}</Box>
@@ -108,10 +118,12 @@ const ViewOption = ({ option, index }) => {
 		</ViewOptionStyles>
 	);
 };
+
 const ViewOptionStyles = styled(Stack)(({ theme }) => ({
-	backgroundColor: theme.palette.background.paper,
+	backgroundColor: theme.palette.background.default,
 	padding: theme.spacing(1, 3),
-	border: '1px solid',
 	borderColor: theme.palette.grey[300],
 	borderRadius: theme.shape.borderRadius,
+	borderWidth: 1,
+	borderStyle: 'solid',
 }));

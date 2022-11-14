@@ -17,7 +17,7 @@ const AnswerOption = ({ option, onSelected, index, selected }) => {
 				</Typography>
 				<Stack alignItems='center'>
 					{contents.map((opt, idx) => (
-						<Fragment key={idx}>{typeFactory(opt)}</Fragment>
+						<Fragment key={idx}>{typeFactory(opt, 'quiz')}</Fragment>
 					))}
 				</Stack>
 			</Stack>
