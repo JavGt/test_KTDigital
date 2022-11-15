@@ -1,10 +1,11 @@
-import { Button, Stack, TextField, Typography } from '@mui/material';
+import { Button, IconButton, Stack, TextField, Typography } from '@mui/material';
 import { useReducer, useState } from 'react';
 import { MultipleOptions } from '../InputInstruction';
 
+import AddIcon from '@mui/icons-material/Add';
 import { styled } from '@mui/material/styles';
 import { NavigateNext } from '@mui/icons-material/';
-import { AddImagenOption } from '../AddImagenOption';
+import { QuestionsContainer } from '../QuestionsContainer';
 
 export const actions = {
 	setInstructions: 'setInstructions',
@@ -30,12 +31,50 @@ const FormAddQuiz = () => {
 
 			<InputTime />
 
+			<QuestionsContainer data={[]} />
+
 			<Stack direction='row' justifyContent='flex-end'>
 				<Button endIcon={<NavigateNext />} variant='contained' type='submit'>
 					Siguiente
 				</Button>
 			</Stack>
 		</FormAddQuizStyles>
+	);
+};
+
+const actionsQuestions = {};
+
+const reducerQuestions = (state, action) => {
+	switch (action.type) {
+		case actions.setInstructions:
+			return { ...state, instructions: action.payload };
+		default:
+			return state;
+	}
+};
+
+const QuestionCreate = () => {
+	const [countQuestions, setCountQuestions] = useState(1);
+
+	return (
+		<>
+			<Stack direction={'row'} justifyContent='space-between' gap={2}>
+				<Typography variant='h5' component='h2' gutterBottom fontWeight={600}>
+					Crear pregunta
+				</Typography>
+				<IconButton>
+					<AddIcon />
+				</IconButton>
+			</Stack>
+			{Array(countQuestions)
+				.fill()
+				.map((_, index) => (
+					<>
+						<MultipleOptions label='Instrucciones del quiz' />
+						<MultipleOptions label='Opciones' />
+					</>
+				))}
+		</>
 	);
 };
 

@@ -6,6 +6,7 @@ import { Box } from '@mui/system';
 import { typeFactory } from '@/utils/typeFactory';
 import { styled } from '@mui/material/styles';
 import { AddOption, objType, Selector } from '../SelectType/SelectType';
+import { useEffect } from 'react';
 
 export const instructionContext = createContext();
 
@@ -26,17 +27,16 @@ const reducer = (state, action) => {
 	}
 };
 
-const Provider = ({ children, locked }) => {
-	const [instructions, dispatch] = useReducer(reducer, [
-		{
-			type: 'text',
-			value: 'value',
-		},
-	]);
+const Provider = ({ children, locked, setData }) => {
+	const [instructions, dispatch] = useReducer(reducer, []);
 	const [type, setType] = useState(0);
 	const [options, setOptions] = useState(() =>
 		objType.filter(type => type.value !== locked)
 	);
+
+	useEffect(() => {
+		setData && setData(instructions);
+	}, [instructions]);
 
 	return (
 		<instructionContext.Provider
@@ -84,9 +84,9 @@ const InputInstruction = ({ label }) => {
 	);
 };
 
-export default function MultipleOptions({ locked, ...props }) {
+export default function MultipleOptions({ locked, setData, ...props }) {
 	return (
-		<Provider locked={locked}>
+		<Provider locked={locked} setData={setData}>
 			<InputInstruction {...props} />
 		</Provider>
 	);
