@@ -88,6 +88,7 @@ const theme = createTheme({
 			main: colors.success,
 			dark: colors.successDark,
 			light: colors.successLight,
+			contrastText: colors.white,
 		},
 		error: {
 			main: colors.error,

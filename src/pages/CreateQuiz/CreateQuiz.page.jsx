@@ -22,18 +22,3 @@ export default function CreateQuiz() {
 		</MathJaxContext>
 	);
 }
-
-const Steeper = ({ children, activeStep }) => {
-	const steps = ['Información del quiz', 'Preguntas', 'Revisión'];
-	return (
-		<Box my={5}>
-			<Stepper alternativeLabel activeStep={activeStep}>
-				{steps.map((label, index) => (
-					<Step key={label}>
-						<StepLabel StepIconProps={{ completed: false }}>{label}</StepLabel>
-					</Step>
-				))}
-			</Stepper>
-		</Box>
-	);
-};
