@@ -18,7 +18,8 @@ const ViewFinish = ({ score, viewQuestionRating, viewOptions, viewCountQuestions
 					alignItems={'center'}
 					direction={{ xs: 'column', sm: 'row' }}
 					gap={1}
-					justifyContent='space-between'>
+					justifyContent='space-between'
+				>
 					<div>
 						<Typography variant='h5'>
 							¡Felicidades! Has completado el ejercicio
@@ -32,7 +33,8 @@ const ViewFinish = ({ score, viewQuestionRating, viewOptions, viewCountQuestions
 							my={3}
 							sx={{
 								filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-							}}>
+							}}
+						>
 							<picture>
 								<img
 									src={
@@ -58,7 +60,8 @@ const ViewFinish = ({ score, viewQuestionRating, viewOptions, viewCountQuestions
 								<Stack
 									direction={{ xs: 'column', sm: 'row' }}
 									mb={2}
-									justifyContent='space-between'>
+									justifyContent='space-between'
+								>
 									<Typography id={idx} fontWeight='800' variant='h6'>
 										Pregunta:{' '}
 										<Typography component='span' variant='h6'>
@@ -73,11 +76,13 @@ const ViewFinish = ({ score, viewQuestionRating, viewOptions, viewCountQuestions
 												sx={{
 													backgroundColor: 'primary.main',
 													padding: '0.2rem 0.5rem',
-												}}>
+												}}
+											>
 												<Typography
 													color={'common.white'}
 													component='span'
-													variant='body1'>
+													variant='body1'
+												>
 													{qn.answersObtained}/{qn.correctAnswers}
 												</Typography>
 											</Box>
@@ -96,7 +101,8 @@ const ViewFinish = ({ score, viewQuestionRating, viewOptions, viewCountQuestions
 													padding: theme => theme.spacing(2),
 													borderRadius: '0.5rem',
 													backgroundColor: theme => alpha(theme.palette.error.main, 0.5),
-												}}>
+												}}
+											>
 												<Typography fontWeight={600} color='common.white' variant='body1'>
 													No seleccionaste ninguna opción
 												</Typography>
@@ -109,12 +115,15 @@ const ViewFinish = ({ score, viewQuestionRating, viewOptions, viewCountQuestions
 															<Typography
 																variant='h5'
 																color={'primary.main'}
-																fontWeight={900}>
+																fontWeight={900}
+															>
 																({getAlphabet(opt.index)})
 															</Typography>
 															<Box>
 																{opt.contents.map((ctn, idx3) => (
-																	<Fragment key={idx3}>{typeFactory(ctn)}</Fragment>
+																	<Fragment key={idx3}>
+																		{typeFactory(ctn, 'quiz')}
+																	</Fragment>
 																))}
 															</Box>
 														</Stack>
@@ -134,7 +143,8 @@ const ViewFinish = ({ score, viewQuestionRating, viewOptions, viewCountQuestions
 											sx={{
 												padding: '0.2rem 0.5rem',
 												border: '1px solid',
-											}}>
+											}}
+										>
 											<Typography variant='body1'>{qn.qualification}%</Typography>
 										</Box>
 									</Stack>
